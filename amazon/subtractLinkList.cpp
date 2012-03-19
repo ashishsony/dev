@@ -10,7 +10,7 @@ using namespace std;
 node* insert(int n);
 node * subtractLinkedLists(node * h1, node * h2){
     /*
-       The above structure has already been defined, please do NOT redefine, you can just start using as node * x; 
+       The above structure has already been defined, please do NOT redefine, you can just start using as node * x;
      */
     int h1Num=0,h2Num=0;
     node * a=h1, *b=h2;
@@ -25,8 +25,78 @@ node * subtractLinkedLists(node * h1, node * h2){
         b=b->next;
     }
     a=h1;b=h2;
+    int diff=(h1Num-h2Num);
+    node* FINAL=NULL,*ff=NULL;
+    if(diff<0)
+    {diff=abs(diff);
+		while(h2!=NULL)
+		{
+			while(diff!=0)//uptill the diff keep adding the nodes to FINAL..
+			{
+				if(FINAL==NULL)
+				{
+					FINAL=insert(h2->val);
+					ff=FINAL;
+				}
+				else
+				{
+					FINAL->next=insert(h2->val);
+					FINAL=FINAL->next;
+				}
+				h2=h2->next;
+				diff--;
+			}// now the actual linked list subtraction starts...
+			FINAL->next=insert(h2->val - h1->val);
+			h2=h2->next;h1=h1->next;FINAL=FINAL->next;
+		}
+	}
+	else if(diff>0)
+	{
+		diff=abs(diff);
+				while(h1!=NULL)
+				{
+					while(diff!=0)
+					{
+						if(FINAL==NULL)
+						{
+							FINAL=insert(h1->val);
+							ff=FINAL;
+						}
+						else
+						{
+							FINAL->next=insert(h1->val);//=h1->next;
+							FINAL=FINAL->next;//final can be assigned to its next only when it does exist i.e !NULL
+						}
+							h1=h1->next;
+						diff--;
+					}
+					FINAL->next=insert(h1->val - h2->val);
+					h2=h2->next;h1=h1->next;FINAL=FINAL->next;
+		}
+	}
+	else// lengths are equal
+		{
+			while(h1!=NULL)
+			{
+				if(FINAL==NULL)
+				{
+					FINAL=insert(h1->val - h2->val);
+					ff=FINAL;
+				}
+				else
+				{
+					FINAL->next=insert(h1->val - h2->val);
+					FINAL=FINAL->next;
+				}
+				h2=h2->next;h1=h1->next;
+			}
+
+		}
+    return ff;
+    /*
+
     node *out;
-    int diff=    (h1Num-h2Num);
+
     if(diff!=0)
     {
         if(diff<0)
@@ -74,7 +144,7 @@ cout<<"a-b"<<a->val<<","<<b->val<<endl;
     t2->next=t1=out;
     return t2;
 
-
+*/
 }
 node* insert(int n)
 {
@@ -99,11 +169,13 @@ int main()
     b=b->next=insert(1);
     a=ra;b=rb;
     node * out= subtractLinkedLists(a,b);
+    cout<<"\nA:::";
     while(a!=NULL)
     {
         cout<<a->val<<",";
         a=a->next;
     }
+    cout<<"\nB:::";
     while(b!=NULL)
     {
         cout<<b->val<<",";
@@ -112,10 +184,12 @@ int main()
 //    */
             //cout<<"out=n:"<<out;
     cout<<endl;
+    cout<<"\nOUT:::";
+
     while(out!=NULL)
     {
         cout<<out->val<<",";
         out=out->next;
     }
-    
+
 }
