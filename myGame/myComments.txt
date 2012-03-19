@@ -1,0 +1,8 @@
+The only feature that I have not been able to replicate is the smooth rolling/falling animation of the block that the demo flash game had.
+Apart from that shadow effects are also not present as of now.
+
+The game controls are the left/right/up/down keyboard keys, to move the block around and spacebar to restart the level in case the player wins/loses.
+
+Apart from that holding the left mouse button and dragging will let the user rotate the scene thereby viewing the scene in 3d.
+
+"F1" will enable fullscreen mode and "Esc" will quit the game.
