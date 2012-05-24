@@ -1,0 +1,5 @@
+LD_PRELOAD=/home/ashish/dev/progs/libsTesting/libprintO.so.1.0.1 ./a.out
+g++ -shared -Wl,-soname,libprintO.so.1 -o libprintO.so.1.0.1 printOveride.o -lc
+export LD_LIBRARY_PATH=`pwd`
+sudo ldconfig -n /home/ashish/dev/progs/libsTesting
+g++ main.cpp -lprint -L/home/ashish/dev/progs/libsTesting or L.
