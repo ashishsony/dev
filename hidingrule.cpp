@@ -21,10 +21,10 @@ class D1:public B
 
 
         //D1& operator=(const D2& that)
-        //B& operator=(const B& that)
-        //{
-        //    cout<<"\nD1& operator=(const D1& that)\n";
-        //}
+        B& operator=(const B& that)
+        {
+            cout<<"\nD1& operator=(const D1& that)\n";
+        }/**/
         //void fun(D1& d1)
         void fun(B& b)
         {

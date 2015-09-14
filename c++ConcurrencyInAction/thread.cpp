@@ -7,6 +7,10 @@ void fun()
 }
 int main()
 {
-    thread th1(fun);
-    th1.join();
+    {
+        thread th1(fun);
+        thread &a=th1;
+    }
+    cout<<"\njjjjjjjjjjj\n";
+    a.join();
 }

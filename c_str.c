@@ -3,7 +3,7 @@
 int main()
 {
 char *c = "abc";
-*c = 'd';
+//*c = 'd';
 printf("%s",c);
 return 0;
 }

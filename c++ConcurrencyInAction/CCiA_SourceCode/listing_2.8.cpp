@@ -10,6 +10,7 @@ struct accumulate_block
 {
     void operator()(Iterator first,Iterator last,T& result)
     {
+        std::cout<<"\n threadid:"<<std::this_thread::get_id()<<std::endl;
         result=std::accumulate(first,last,result);
     }
 };
@@ -58,7 +59,7 @@ T parallel_accumulate(Iterator first,Iterator last,T init)
 int main()
 {
     std::vector<int> vi;
-    for(int i=0;i<10;++i)
+    for(int i=0;i<1000;++i)
     {
         vi.push_back(10);
     }
